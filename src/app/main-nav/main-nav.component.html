@@ -1,0 +1,117 @@
+<mat-sidenav-container >
+  <mat-sidenav mode="side" #sidenav role="navigation" style="cursor: pointer;">
+   <mat-nav-list style="width:100%;text-align:justify;">
+
+      <a class="hvr-underline-from-center"  mat-list-item routerLink="/login" *ngIf="!currentUser" (click)="showFirst=!showFirst;sidenav.toggle()">
+        Login<span class="example-spacer"></span>
+        <mat-icon class="icon">input</mat-icon>
+      </a>
+      <hr *ngIf="!currentUser">
+
+
+    <a class="hvr-underline-from-center"  mat-list-item routerLink="/home" (click)="showFirst=!showFirst;sidenav.toggle()" >HOME
+      <span class="example-spacer"></span>
+      <mat-icon class="icon">home</mat-icon>
+    </a>
+
+    <hr>
+    <a class="hvr-underline-from-center" mat-list-item routerLink="/mysearch" (click)="showFirst=!showFirst;sidenav.toggle()">My Search
+      <span class="example-spacer"></span>
+
+      <mat-icon class = "icon">person</mat-icon>
+    </a>
+<hr>
+    <a class="hvr-underline-from-center" mat-list-item routerLink="/search" (click)="showFirst=!showFirst;sidenav.toggle()">Search
+      <span class="example-spacer"></span>
+
+      <mat-icon class = "icon">search</mat-icon>
+    </a>
+
+    <hr>
+
+    <a class="hvr-underline-from-center" mat-list-item  routerLink="/contacts" (click)="showFirst=!showFirst;sidenav.toggle()">DOCTORS
+      <span class="example-spacer"></span>
+      <mat-icon class="icon">person</mat-icon>
+    </a>
+
+    <hr>
+
+    <a class="hvr-underline-from-center" mat-list-item routerLink="/admin" *ngIf="isAdmin" (click)="showFirst=!showFirst;sidenav.toggle()">ADMIN
+      <span class="example-spacer"></span>
+      <mat-icon class="icon">verified_user</mat-icon>
+
+    </a>
+    <hr *ngIf="isAdmin">
+
+    <a class="hvr-underline-from-center"  mat-list-item  (click)="sidenav.toggle();showFirst=!showFirst;logout();" *ngIf="currentUser">Logout
+      <span class="example-spacer"></span>
+      <mat-icon class="icon">input</mat-icon>
+    </a>
+
+    </mat-nav-list>
+  </mat-sidenav >
+  <mat-sidenav-content >
+    <mat-toolbar class="topnav" >
+            <a href="#"  *ngIf="currentUser">Welcome {{currentUser.firstName}}</a>
+            <div class="topnav-right">
+                <a href="#">About</a>
+                <a  href="#" >Team</a>
+                <a  href="#" >Products</a>
+                <a  href="#">Login</a>
+            </div>
+    </mat-toolbar>
+    <mat-toolbar style="background-color:white;">
+
+       <button  mat-icon-button color='warn' (click)="sidenav.toggle();showFirst=!showFirst" >
+            <mat-icon *ngIf="!showFirst">menu</mat-icon>
+            <mat-icon *ngIf="showFirst">close</mat-icon>
+      </button>
+
+     <div ><a class='site-logo' routerLink="/home">KAPDOC</a></div>
+
+     <mat-form-field class='searchform'>
+      <input matInput #box (keyup.enter)="onEnter(box.value)" type="search" placeholder="Find a Doctor" [(ngModel)]="value">
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+     <div id='navigation' fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.sm fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+
+            <li>
+                <a routerLink='/home'>
+                    HOME
+                </a>
+              </li>
+
+            <li *ngIf="isAdmin">
+                <a routerLink='/admin'>ADMIN</a>
+            </li>
+
+            <li>
+                <a routerLink='/contacts'>DOCTORS
+                </a>
+              </li>
+              <li>
+                <a routerLink='/search'>SEARCH
+                    <mat-icon class="icon">search</mat-icon>
+                </a>
+              </li>
+
+              <li *ngIf="!currentUser">
+                <a routerLink='/login' >Login</a>
+            </li>
+        </ul>
+        <button  *ngIf="currentUser" mat-raised-button color='warn' type="button" (click)="logout();">Logout
+          </button>
+     </div>
+    </mat-toolbar>
+    <hr style="height:1px;border:none;color:rgb(83, 64, 64);background-color:rgb(202, 52, 52);" />
+
+    <ng-content style="background-color:white;"></ng-content>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+

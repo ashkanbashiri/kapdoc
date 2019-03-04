@@ -1,0 +1,33 @@
+#infinite-scroller {
+height:1000px;
+overflow: scroll;
+  padding: 0;
+  height:400px;
+  overflow: scroll;
+  list-style: none;}
+  li {
+    padding : 10px 5px;
+    line-height: 1.5;
+  }
+    :nth-child(odd) {
+      background : palegreen;
+    }
+    :nth-child(even) {
+      background : palevioletred;
+    }
+
+    .img {
+      width: 100%;
+      margin-bottom: 18%;
+    }
+    .card-picture {
+      width: 23%;
+      margin-bottom: 2%;
+    }
+    .container {
+      min-height: 100%;
+      width: 100%;
+    }
+    .search-form {
+      width: 90%;
+    }

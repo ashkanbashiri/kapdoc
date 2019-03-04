@@ -1,0 +1,27 @@
+<mat-form-field class="search-form">
+    <input matInput placeholder="Search Picture" type="text">
+  </mat-form-field>
+  <button button="submit" mat-raised-button color="primary">Search</button>
+  <br>
+
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <mat-card class="card-picture" *ngFor="let picture of news">
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+        <span fxFlex="80%">{{picture.title}}</span>
+        <mat-icon fxFlex="10%">mode_edit</mat-icon>
+        <mat-icon fxFlex="10%">delete</mat-icon>
+      </mat-card-title>
+      <img mat-card-image src="../../assets/logo.png"/>
+    </mat-card>
+  </div>
+
+<div id="infinite-scroller" appInfiniteScroller
+scrollPerecnt="25"
+immediateCallback="true"
+[scrollCallback]="scrollCallback">
+<ul>
+    <li *ngFor="let item of news">
+      {{item.title}}
+    </li>
+</ul>
+</div>
