@@ -1,0 +1,16 @@
+.fa-heart {
+  color: rgb(211, 40, 40);
+}
+
+footer {
+  text-align: center;
+  width: 100vw;
+  height: inherit;
+  background: darkslategrey;
+  color: white;
+  padding: .5rem 0 1rem 0;
+  > * { padding: 0 0 0 2rem; }
+  h2 { font-size: 1.4em; }
+}
+
+.info { padding: 2vh 1.7vw; }
